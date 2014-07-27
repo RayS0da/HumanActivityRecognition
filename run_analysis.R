@@ -14,7 +14,7 @@ signal_total <- rbind(signal_test, signal_train)
 nameActivity <- read.table("UCI HAR Dataset/activity_labels.txt")
 nameSignal <- read.table("UCI HAR Dataset/features.txt")
 
-# 2. Extracts only the measurements on the mean and standard deviation for each measurement:
+# 2. Extract the measurements on the mean and standard deviation for each measurement:
 vecMean <- grep('mean', nameSignal[,2])
 vecStd <- grep('std', nameSignal[,2])
 vecMeanFreq <- grep('meanFreq', nameSignal[,2])
@@ -32,10 +32,10 @@ signal_tidy <- cbind(subject_total, activity_total, signal_use)
 # 4. Label the data set with descriptive variable names:
 names(signal_tidy) <- c('SUBJECT', 'ACTIVITY', as.vector(nameSignal[vecUse, 2]))
 
-# 5. Creat the tidy data set
+# 5. Create the tidy data set
 write.table(signal_tidy, file = "tidy_dataset_1.txt")
 
-# 6. Creat a second, independent tidy data set with the average of each variable for
+# 6. Create a second, independent tidy data set with the average of each variable for
 #    each activity and each subject:
 signal_temp <- data.frame()
 v1 <- c()
